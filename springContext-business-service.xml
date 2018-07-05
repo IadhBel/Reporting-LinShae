@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="    
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-autowire="no">
+
+	<bean id="domainBusinessService" class="org.linagora.linshare.core.business.service.impl.DomainBusinessServiceImpl">
+		<constructor-arg ref="abstractDomainRepository" />
+	</bean>
+
+	<bean id="documentEntryBusinessService" class="org.linagora.linshare.core.business.service.impl.DocumentEntryBusinessServiceImpl">
+		<constructor-arg ref="fileDataStore" />
+		<constructor-arg ref="timeStampingService" />
+		<constructor-arg ref="documentEntryRepository" />
+		<constructor-arg ref="documentRepository" />
+		<constructor-arg ref="signatureBusinessService" />
+		<constructor-arg ref="uploadRequestEntryBusinessService" />
+		<constructor-arg ref="thumbnailGeneratorService" />
+		<constructor-arg value="${linshare.documents.storage.deduplication}" />
+		<constructor-arg ref="workGroupNodeMongoRepository" />
+		<constructor-arg ref="documentGarbageCollecteurMongoRepository" />
+		<constructor-arg ref="thumbnailRepository" />
+	</bean>
+
+
+	<bean id="shareEntryBusinessService" class="org.linagora.linshare.core.business.service.impl.ShareEntryBusinessServiceImpl">
+		<constructor-arg ref="shareEntryRepository" />
+		<constructor-arg ref="accountRepository" />
+		<constructor-arg ref="documentEntryRepository" />
+	</bean>
+
+
+	<bean id="shareEntryGroupBusinessService" class="org.linagora.linshare.core.business.service.impl.ShareEntryGroupBusinessServiceImpl">
+		<constructor-arg ref="shareEntryGroupRepository" />
+	</bean>
+
+
+	<bean id="anonymousShareEntryBusinessService" class="org.linagora.linshare.core.business.service.impl.AnonymousShareEntryBusinessServiceImpl">
+		<constructor-arg ref="anonymousShareEntryRepository" />
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="documentEntryRepository" />
+		<constructor-arg ref="contactRepository" />
+		<constructor-arg ref="anonymousUrlBusinessService" />
+	</bean>
+
+
+	<bean id="anonymousUrlBusinessService" class="org.linagora.linshare.core.business.service.impl.AnonymousUrlBusinessServiceImpl">
+		<constructor-arg ref="anonymousUrlRepository" />
+		<constructor-arg value="${linshare.user.url.anonymousurl.link}" />
+		<constructor-arg ref="passwordService" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+
+
+	<bean id="signatureBusinessService" class="org.linagora.linshare.core.business.service.impl.SignatureBusinessServiceImpl">
+		<constructor-arg ref="fileDataStore" />
+		<constructor-arg ref="signatureRepository" />
+		<constructor-arg ref="documentRepository" />
+		<constructor-arg ref="accountRepository" />
+	</bean>
+
+	<bean id="domainAccessPolicyBusinessService" class="org.linagora.linshare.core.business.service.impl.DomainAccessPolicyBusinessServiceImpl">
+		<constructor-arg ref="domainAccessRuleRepository" />
+	</bean>
+
+	<bean id="domainPolicyBusinessService" class="org.linagora.linshare.core.business.service.impl.DomainPolicyBusinessServiceImpl">
+		<constructor-arg ref="domainPolicyRepository" />
+		<constructor-arg ref="abstractDomainRepository" />
+		<constructor-arg ref="domainAccessPolicyRepository" />
+	</bean>
+	<bean id="functionalityBusinessService" class="org.linagora.linshare.core.business.service.impl.FunctionalityBusinessServiceImpl">
+		<constructor-arg ref="functionalityRepository" />
+		<constructor-arg ref="abstractDomainRepository" />
+	</bean>
+	<bean id="mailActivationBusinessService" class="org.linagora.linshare.core.business.service.impl.MailActivationBusinessServiceImpl">
+		<constructor-arg ref="mailActivationRepository" />
+		<constructor-arg ref="abstractDomainRepository" />
+	</bean>
+	<bean id="mailingListBusinessService" class="org.linagora.linshare.core.business.service.impl.MailingListBusinessServiceImpl">
+		<constructor-arg ref="mailingListRepository" />
+		<constructor-arg ref="mailingListContactRepository" />
+	</bean>
+
+	<bean id="mailConfigBusinessService" class="org.linagora.linshare.core.business.service.impl.MailConfigBusinessServiceImpl">
+		<constructor-arg ref="abstractDomainRepository" />
+		<constructor-arg ref="mailConfigRepository" />
+		<constructor-arg ref="mailContentLangRepository" />
+		<constructor-arg ref="mailFooterLangRepository" />
+	</bean>
+
+	<bean id="mailContentBusinessService" class="org.linagora.linshare.core.business.service.impl.MailContentBusinessServiceImpl">
+		<constructor-arg ref="abstractDomainRepository" />
+		<constructor-arg ref="mailContentRepository" />
+		<constructor-arg ref="mailContentLangRepository" />
+	</bean>
+
+	<bean id="mailFooterBusinessService" class="org.linagora.linshare.core.business.service.impl.MailFooterBusinessServiceImpl">
+		<constructor-arg ref="abstractDomainRepository" />
+		<constructor-arg ref="mailFooterRepository" />
+		<constructor-arg ref="mailFooterLangRepository" />
+	</bean>
+
+	<bean id="mailLayoutBusinessService" class="org.linagora.linshare.core.business.service.impl.MailLayoutBusinessServiceImpl">
+		<constructor-arg ref="abstractDomainRepository" />
+		<constructor-arg ref="mailLayoutRepository" />
+		<constructor-arg ref="mailConfigRepository" />
+	</bean>
+
+	<bean id="mimeTypeBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.MimeTypeBusinessServiceImpl">
+		<constructor-arg ref="mimeTypeRepository" />
+	</bean>
+
+	<bean id="mimePolicyBusinessService" class="org.linagora.linshare.core.business.service.impl.MimePolicyBusinessServiceImpl">
+		<constructor-arg ref="mimePolicyRepository" />
+		<constructor-arg ref="mimeTypeRepository" />
+		<constructor-arg ref="mimeTypeMagicNumberDao" />
+		<constructor-arg ref="abstractDomainRepository" />
+	</bean>
+
+	<bean id="domainPermissionBusinessService" class="org.linagora.linshare.core.business.service.impl.DomainPermissionBusinessServiceImpl">
+		<constructor-arg ref="domainBusinessService" />
+	</bean>
+
+	<bean id="guestBusinessService" class="org.linagora.linshare.core.business.service.impl.GuestBusinessServiceImpl">
+		<constructor-arg ref="guestRepository" />
+		<constructor-arg ref="userRepository" />
+		<constructor-arg ref="allowedContactRepository" />
+		<constructor-arg ref="passwordService" />
+	</bean>
+
+	<bean id="uploadRequestBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadRequestBusinessServiceImpl">
+		<constructor-arg ref="uploadRequestRepository" />
+	</bean>
+
+	<bean id="uploadRequestEntryBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadRequestEntryBusinessServiceImpl">
+		<constructor-arg ref="uploadRequestEntryRepository" />
+	</bean>
+
+	<bean id="uploadRequestGroupBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadRequestGroupBusinessServiceImpl">
+		<constructor-arg ref="uploadRequestGroupRepository" />
+	</bean>
+
+	<bean id="uploadRequestHistoryBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadRequestHistoryBusinessServiceImpl">
+		<constructor-arg ref="uploadRequestHistoryRepository" />
+	</bean>
+
+	<bean id="uploadRequestTemplateBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadRequestTemplateBusinessServiceImpl">
+		<constructor-arg ref="uploadRequestTemplateRepository" />
+	</bean>
+
+	<bean id="uploadRequestUrlBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadRequestUrlBusinessServiceImpl">
+		<constructor-arg ref="uploadRequestUrlRepository" />
+		<constructor-arg ref="passwordService" />
+		<constructor-arg ref="contactRepository" />
+		<constructor-arg value="#" />
+	</bean>
+
+	<bean id="technicalAccountBusinessService" class="org.linagora.linshare.core.business.service.impl.TechnicalAccountBusinessServiceImpl">
+		<constructor-arg ref="abstractDomainRepository" />
+		<constructor-arg ref="technicalAccountRepository" />
+		<constructor-arg ref="passwordService" />
+	</bean>
+
+	<bean id="technicalAccountPermissionBusinessService" class="org.linagora.linshare.core.business.service.impl.TechnicalAccountPermissionBusinessServiceImpl">
+		<constructor-arg ref="technicalAccountPermissionRepository" />
+	</bean>
+
+	<bean id="uploadPropositionBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadPropositionBusinessServiceImpl">
+		<constructor-arg ref="uploadPropositionRepository" />
+	</bean>
+
+	<bean id="uploadPropositionFilterBusinessService" class="org.linagora.linshare.core.business.service.impl.UploadPropositionFilterBusinessServiceImpl">
+		<constructor-arg ref="uploadPropositionFilterRepository" />
+		<constructor-arg ref="uploadPropositionActionRepository" />
+		<constructor-arg ref="uploadPropositionRuleRepository" />
+	</bean>
+	<bean id="entryBusinessService" class="org.linagora.linshare.core.business.service.impl.EntryBusinessServiceImpl">
+		<constructor-arg ref="entryRepository" />
+		<constructor-arg ref="shareEntryRepository" />
+		<constructor-arg ref="anonymousShareEntryRepository" />
+	</bean>
+	<bean id="welcomeMessagesBusinessService" class="org.linagora.linshare.core.business.service.impl.WelcomeMessagesBusinessServiceImpl">
+		<constructor-arg ref="welcomeMessagesRepository" />
+	</bean>
+
+	<bean id="asyncTaskBusinessService" class="org.linagora.linshare.core.business.service.impl.AsyncTaskBusinessServiceImpl">
+		<constructor-arg ref="asyncTaskRepository" />
+	</bean>
+
+	<bean id="operationHistoryBusinessService" class="org.linagora.linshare.core.business.service.impl.OperationHistoryBusinessServiceImpl">
+		<constructor-arg ref="operationHistoryRepository" />
+	</bean>
+	<bean id="userDailyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.UserDailyStatBusinessServiceImpl">
+		<constructor-arg ref="userDailyStatRepository" />
+		<constructor-arg ref="operationHistoryRepository" />
+	</bean>
+	<bean id="userWeeklyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.UserWeeklyStatBusinessServiceImpl">
+		<constructor-arg ref="userWeeklyStatRepository" />
+		<constructor-arg ref="userDailyStatRepository" />
+	</bean>
+	<bean id="userMonthlyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.UserMonthlyStatBusinessServiceImpl">
+		<constructor-arg ref="userMonthlyStatRepository" />
+		<constructor-arg ref="userWeeklyStatRepository" />
+	</bean>
+	<bean id="domainDailyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.DomainDailyStatBusinessServiceImpl">
+		<constructor-arg ref="domainDailyStatRepository" />
+		<constructor-arg ref="userDailyStatRepository" />
+		<constructor-arg ref="threadDailyStatRepository" />
+	</bean>
+	<bean id="domainWeeklyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.DomainWeeklyStatBusinessServiceImpl">
+		<constructor-arg ref="domainWeeklyStatRepository" />
+		<constructor-arg ref="domainDailyStatRepository" />
+	</bean>
+	<bean id="domainMonthlyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.DomainMonthlyStatBusinessServiceImpl">
+		<constructor-arg ref="domainMonthlyStatRepository" />
+		<constructor-arg ref="domainWeeklyStatRepository" />
+	</bean>
+	<bean id="threadDailyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.ThreadDailyStatBusinessServiceImpl">
+		<constructor-arg ref="threadDailyStatRepository" />
+		<constructor-arg ref="operationHistoryRepository" />
+	</bean>
+	<bean id="threadWeeklyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.ThreadWeeklyStatBusinessServiceImpl">
+		<constructor-arg ref="threadWeeklyStatRepository" />
+		<constructor-arg ref="threadDailyStatRepository" />
+	</bean>
+	<bean id="threadMonthlyStatBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.ThreadMonthlyStatBusinessServiceImpl">
+		<constructor-arg ref="threadMonthlyStatRepository" />
+		<constructor-arg ref="threadWeeklyStatRepository" />
+	</bean>
+	<bean id="statisticBusinessService"
+		class="org.linagora.linshare.core.business.service.impl.StatisticBusinessServiceImpl">
+		<constructor-arg ref="statisticRepository" />
+	</bean>
+	<bean id="domainQuotaBusinessService" class="org.linagora.linshare.core.business.service.impl.DomainQuotaBusinessServiceImpl">
+		<constructor-arg ref="domainQuotaRepository" />
+		<constructor-arg ref="abstractDomainRepository" />
+		<constructor-arg ref="containerQuotaRepository" />
+	</bean>
+	<bean id="accountQuotaBusinessService" class="org.linagora.linshare.core.business.service.impl.AccountQuotaBusinessServiceImpl">
+		<constructor-arg ref="accountQuotaRepository" />
+		<constructor-arg ref="operationHistoryRepository" />
+		<constructor-arg ref="containerQuotaRepository" />
+	</bean>
+	<bean id="containerQuotaBusinessService" class="org.linagora.linshare.core.business.service.impl.ContainerQuotaBusinessServiceImpl">
+		<constructor-arg ref="containerQuotaRepository" />
+		<constructor-arg ref="accountQuotaRepository" />
+	</bean>
+	<bean id="batchHistoryBusinessService" class="org.linagora.linshare.core.business.service.impl.BatchHistoryBusinessServiceImpl">
+		<constructor-arg ref="batchHistoryRepository" />
+	</bean>
+	<bean id="virusScannerBusinessService" class="org.linagora.linshare.core.business.service.impl.ClamavVirusScannerBusinessServiceImpl">
+		<constructor-arg index="0" value="${virusscanner.clamav.host}" />
+		<constructor-arg index="1" value="${virusscanner.clamav.port}" />
+	</bean>
+	<bean id="upgradeTaskBusinessService" class="org.linagora.linshare.core.business.service.impl.UpgradeTaskBusinessServiceImpl">
+		<constructor-arg ref="upgradeTaskRepository" />
+	</bean>
+	<bean name="thumbnailFactoryService" class="org.linagora.linshare.core.business.service.impl.ThumbnailGeneratorFactoryBusinessServiceImpl">
+	</bean>
+	<bean name="thumbnailGeneratorService" class="org.linagora.linshare.core.business.service.impl.ThumbnailGeneratorFactoryBusinessServiceImpl"
+		init-method="start" destroy-method="stop" factory-method="createInstance" factory-bean="thumbnailFactoryService">
+		<constructor-arg value="${linshare.linthumbnail.remote.mode}" />
+		<constructor-arg ref="fileDataStore" />
+		<constructor-arg value="${linshare.documents.thumbnail.enable}" />
+		<constructor-arg value="${linshare.documents.thumbnail.pdf.enable}" />
+		<constructor-arg value="${linshare.linthumbnail.dropwizard.server}" />
+	</bean>
+
+	<bean id="timeStampingService"
+		class="org.linagora.linshare.core.service.impl.TimeStampingServiceImpl">
+	</bean>
+	<!--  Ugly workaround -->
+	<bean name="accountService"
+		class="org.linagora.linshare.core.service.impl.AccountServiceImpl">
+		<constructor-arg ref="accountRepository" />
+	</bean>
+	<bean name="passwordService"
+		class="org.linagora.linshare.core.service.impl.PasswordServiceImpl">
+	</bean>
+</beans>

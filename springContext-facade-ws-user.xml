@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	default-autowire="no">
+
+	<bean id="wsDocumentFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.DocumentFacadeImpl">
+		<constructor-arg ref="documentEntryService" />
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="mimePolicyService" />
+		<constructor-arg ref="shareService" />
+		<constructor-arg ref="entryBusinessService" />
+		<constructor-arg ref="signatureService" />
+		<constructor-arg ref="auditLogEntryService" />
+		<constructor-arg ref="threadService" />
+		<constructor-arg ref="workGroupNodeService" />
+	</bean>
+	<bean id="wsLogEntryFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.LogEntryFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="logEntryService" />
+	</bean>
+	<bean id="wsShareFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.ShareFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="shareService" />
+		<constructor-arg ref="shareEntryService" />
+		<constructor-arg ref="entryBusinessService" />
+		<constructor-arg ref="contactListService" />
+		<constructor-arg ref="auditLogEntryService" />
+	</bean>
+	<bean id="wsThreadFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.ThreadFacadeImpl">
+		<constructor-arg ref="threadService" />
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="userService" />
+		<constructor-arg ref="quotaService" />
+		<constructor-arg ref="functionalityReadOnlyService" />
+		<constructor-arg ref="auditLogEntryService" />
+	</bean>
+	<bean id="wsThreadMemberFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.ThreadMemberFacadeImpl">
+		<constructor-arg ref="threadService" />
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="userService" />
+	</bean>
+	<bean id="wsUserFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.UserFacadeImpl">
+		<constructor-arg ref="userService" />
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="quotaService" />
+		<constructor-arg ref="jwtService" />
+	</bean>
+	<bean id="wsGuestFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.GuestFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="guestService" />
+	</bean>
+	<bean id="wsFunctionalityFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.FunctionalityFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="functionalityService" />
+	</bean>
+
+	<bean id="wsAutoCompleteFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.AutoCompleteFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="userService" />
+		<constructor-arg ref="contactListService" />
+		<constructor-arg ref="threadService" />
+		<constructor-arg ref="recipientFavouriteRepository" />
+	</bean>
+	<bean id="wsShareEntryGroupFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.ShareEntryGroupFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="shareEntryGroupService" />
+	</bean>
+	<bean id="wsMailingListFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.MailingListFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="contactListService" />
+	</bean>
+	<bean id="wsContactListFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.ContactListFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="contactListService" />
+		<constructor-arg ref="auditLogEntryService" />
+	</bean>
+	<bean id="wsMimeTypeFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.MimeTypeFacadeImpl">
+	        <constructor-arg ref="accountService" />
+	</bean>
+
+	<bean id="wsStatisticFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.StatisticFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="statisticService"/>
+	</bean>
+
+	<bean id="wsUploadRequestFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.UploadRequestFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="uploadRequestService" />
+	</bean>
+
+	<bean id="wsUploadRequestGroupFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.UploadRequestGroupFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="uploadRequestService" />
+	</bean>
+
+	<bean id="wsUploadRequestTemplateFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.UploadRequestTemplateFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="uploadRequestService" />
+	</bean>
+
+	<bean id="wsUserPreferenceFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.UserPreferenceFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="userPreferenceService"/>
+	</bean>
+
+	<bean id="wsAuditLogEntryUserFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.AuditLogEntryUserFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="auditLogEntryService"/>
+	</bean>
+
+	<bean id="wsWorkGroupNodeFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.WorkGroupNodeFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="threadService" />
+		<constructor-arg ref="documentEntryService" />
+		<constructor-arg ref="shareEntryService" />
+		<constructor-arg ref="workGroupNodeService"/>
+		<constructor-arg ref="functionalityReadOnlyService"/>
+		<constructor-arg ref="auditLogEntryService" />
+	</bean>
+
+	<bean id="wsAccountQuotaFacade" class="org.linagora.linshare.core.facade.webservice.user.impl.AccountQuotaFacadeImpl">
+		<constructor-arg ref="accountService" />
+		<constructor-arg ref="quotaService" />
+	</bean>
+
+	<bean id="wsWelcomeMessagesFacadeImpl" class="org.linagora.linshare.core.facade.webservice.user.impl.WelcomeMessagesFacadeImpl">
+		<constructor-arg ref="accountService" />
+	</bean>
+
+</beans>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean name="accountRepository" class="org.linagora.linshare.core.repository.hibernate.AccountRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	
+	<bean name="threadRepository" class="org.linagora.linshare.core.repository.hibernate.ThreadRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="threadMemberRepository" class="org.linagora.linshare.core.repository.hibernate.ThreadMemberRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="userRepository" class="org.linagora.linshare.core.repository.hibernate.UserRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="guestRepository" class="org.linagora.linshare.core.repository.hibernate.GuestRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="internalRepository" class="org.linagora.linshare.core.repository.hibernate.InternalRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+		<constructor-arg value="${linshare.multidomain.enable}" />
+	</bean>
+
+	<bean name="rootUserRepository" class="org.linagora.linshare.core.repository.hibernate.RootUserRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="documentRepository" class="org.linagora.linshare.core.repository.hibernate.DocumentRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="signatureRepository" class="org.linagora.linshare.core.repository.hibernate.SignatureRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="documentEntryRepository" class="org.linagora.linshare.core.repository.hibernate.DocumentEntryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="threadEntryRepository" class="org.linagora.linshare.core.repository.hibernate.ThreadEntryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="logEntryRepository" class="org.linagora.linshare.core.repository.hibernate.LogEntryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="shareEntryRepository" class="org.linagora.linshare.core.repository.hibernate.ShareEntryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="shareEntryGroupRepository" class="org.linagora.linshare.core.repository.hibernate.ShareEntryGroupRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="anonymousShareEntryRepository" class="org.linagora.linshare.core.repository.hibernate.AnonymousShareEntryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="anonymousUrlRepository" class="org.linagora.linshare.core.repository.hibernate.AnonymousUrlRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="recipientFavouriteRepository" class="org.linagora.linshare.core.repository.hibernate.RecipientFavouriteRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="cookieRepository" class="org.linagora.linshare.core.repository.hibernate.CookieRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="allowedContactRepository" class="org.linagora.linshare.core.repository.hibernate.AllowedContactRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="domainPatternRepository" class="org.linagora.linshare.core.repository.hibernate.DomainPatternRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="ldapConnectionRepository" class="org.linagora.linshare.core.repository.hibernate.LdapConnectionRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="policyRepository" class="org.linagora.linshare.core.repository.hibernate.PolicyRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="unitRepository" class="org.linagora.linshare.core.repository.hibernate.UnitRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="abstractDomainRepository" class="org.linagora.linshare.core.repository.hibernate.AbstractDomainRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="functionalityRepository" class="org.linagora.linshare.core.repository.hibernate.FunctionalityRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="userProviderRepository" class="org.linagora.linshare.core.repository.hibernate.UserProviderRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="domainAccessRuleRepository" class="org.linagora.linshare.core.repository.hibernate.DomainAccessRuleRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="domainAccessPolicyRepository" class="org.linagora.linshare.core.repository.hibernate.DomainAccessPolicyRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="domainPolicyRepository" class="org.linagora.linshare.core.repository.hibernate.DomainPolicyRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="contactRepository" class="org.linagora.linshare.core.repository.hibernate.ContactRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailingListRepository" class="org.linagora.linshare.core.repository.hibernate.MailingListRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailingListContactRepository" class="org.linagora.linshare.core.repository.hibernate.MailingListContactRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailConfigRepository" class="org.linagora.linshare.core.repository.hibernate.MailConfigRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailContentLangRepository" class="org.linagora.linshare.core.repository.hibernate.MailContentLangRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailContentRepository" class="org.linagora.linshare.core.repository.hibernate.MailContentRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailFooterLangRepository" class="org.linagora.linshare.core.repository.hibernate.MailFooterLangRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailFooterRepository" class="org.linagora.linshare.core.repository.hibernate.MailFooterRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailLayoutRepository" class="org.linagora.linshare.core.repository.hibernate.MailLayoutRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mimePolicyRepository" class="org.linagora.linshare.core.repository.hibernate.MimePolicyRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mimeTypeRepository" class="org.linagora.linshare.core.repository.hibernate.MimeTypeRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadRequestEntryRepository" class="org.linagora.linshare.core.repository.hibernate.UploadRequestEntryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadRequestHistoryRepository" class="org.linagora.linshare.core.repository.hibernate.UploadRequestHistoryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadRequestRepository" class="org.linagora.linshare.core.repository.hibernate.UploadRequestRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadRequestGroupRepository" class="org.linagora.linshare.core.repository.hibernate.UploadRequestGroupRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadRequestTemplateRepository" class="org.linagora.linshare.core.repository.hibernate.UploadRequestTemplateRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadRequestUrlRepository" class="org.linagora.linshare.core.repository.hibernate.UploadRequestUrlRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="technicalAccountRepository" class="org.linagora.linshare.core.repository.hibernate.TechnicalAccountRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="technicalAccountPermissionRepository" class="org.linagora.linshare.core.repository.hibernate.TechnicalAccountPermissionRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadPropositionRepository" class="org.linagora.linshare.core.repository.hibernate.UploadPropositionRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadPropositionFilterRepository" class="org.linagora.linshare.core.repository.hibernate.UploadPropositionFilterRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadPropositionActionRepository" class="org.linagora.linshare.core.repository.hibernate.UploadPropositionActionRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="uploadPropositionRuleRepository" class="org.linagora.linshare.core.repository.hibernate.UploadPropositionRuleRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="entryRepository" class="org.linagora.linshare.core.repository.hibernate.EntryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="welcomeMessagesRepository" class="org.linagora.linshare.core.repository.hibernate.WelcomeMessagesRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="ldapUserProviderRepository" class="org.linagora.linshare.core.repository.hibernate.LdapUserProviderRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="mailActivationRepository" class="org.linagora.linshare.core.repository.hibernate.MailActivationRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="asyncTaskRepository" class="org.linagora.linshare.core.repository.hibernate.AsyncTaskRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="statisticRepository" class="org.linagora.linshare.core.repository.hibernate.StatisticRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="operationHistoryRepository" class="org.linagora.linshare.core.repository.hibernate.OperationHistoryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="userDailyStatRepository" class="org.linagora.linshare.core.repository.hibernate.UserDailyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="userWeeklyStatRepository" class="org.linagora.linshare.core.repository.hibernate.UserWeeklyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="userMonthlyStatRepository" class="org.linagora.linshare.core.repository.hibernate.UserMonthlyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="threadDailyStatRepository" class="org.linagora.linshare.core.repository.hibernate.ThreadDailyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="threadWeeklyStatRepository" class="org.linagora.linshare.core.repository.hibernate.ThreadWeeklyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="threadMonthlyStatRepository" class="org.linagora.linshare.core.repository.hibernate.ThreadMonthlyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="domainDailyStatRepository" class="org.linagora.linshare.core.repository.hibernate.DomainDailyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="domainWeeklyStatRepository" class="org.linagora.linshare.core.repository.hibernate.DomainWeeklyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="domainMonthlyStatRepository" class="org.linagora.linshare.core.repository.hibernate.DomainMonthlyStatRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="domainQuotaRepository" class="org.linagora.linshare.core.repository.hibernate.DomainQuotaRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="accountQuotaRepository" class="org.linagora.linshare.core.repository.hibernate.AccountQuotaRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="containerQuotaRepository" class="org.linagora.linshare.core.repository.hibernate.ContainerQuotaRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="batchHistoryRepository" class="org.linagora.linshare.core.repository.hibernate.BatchHistoryRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="upgradeTaskRepository" class="org.linagora.linshare.core.repository.hibernate.UpgradeTaskRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+
+	<bean name="thumbnailRepository" class="org.linagora.linshare.core.repository.hibernate.ThumbnailRepositoryImpl">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+</beans>
